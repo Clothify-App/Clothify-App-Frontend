@@ -1,6 +1,6 @@
 import React from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
-// import './login.css'
+
 
 function Login() {
   return (

@@ -6,9 +6,9 @@ import Register from './components/auth/Register'
 function App() {
   return (
     <>
-      <Home />
-      <Login />
-      {/* <Register /> */}
+      {/* <Home /> */}
+      {/* <Login /> */}
+      <Register />
     </>
   );
 }
