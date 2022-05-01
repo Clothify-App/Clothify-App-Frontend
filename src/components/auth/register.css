@@ -1,0 +1,128 @@
+.register{
+    min-height: 80vh;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    top: 3rem;
+    display: flex;
+}
+
+.leftContent{
+    flex: 0.5;
+    background-color: #6FBCF3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.leftContent h1{
+    font-size: 50px;
+}
+
+.leftContent p{
+    font-size: 1rem;
+}
+
+#signInBtn{
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid black;
+    width: 150px;
+    border-radius: 40px;
+}
+
+.rightContent{
+    flex: 0.5;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: flex-start;
+}
+
+.closeIcon{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.facebookBtn{
+    background-color: #3487E9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 60%;
+    height: 30px;
+}
+
+.hrContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+.hrContent > span{
+    width: 30%;
+}
+
+#or{
+    text-align: center;
+}
+
+.innerText{
+    font-weight: bold;
+}
+
+.form{
+    width: 70%;
+    height: 100%;
+    margin-top: 15px;
+}
+
+.form > form{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.form > form > input{
+    padding: 5px;
+    border: none;
+    outline: 0;
+    font-size: large;
+    border-bottom: 1px solid lightgray;
+}
+
+.signUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUp > input{
+    background-color: rgb(41, 170, 41);
+    height: 40px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
