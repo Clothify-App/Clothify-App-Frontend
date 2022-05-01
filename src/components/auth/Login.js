@@ -17,11 +17,11 @@ function Login() {
             </div>
             <div className="flex flex-col h-[100%] p-[30px] justify-between">
                 
-                <h2>Sign In</h2>
+                <h2 className='text-lg font-bold'>Sign In</h2>
                 <form action="">
                     <div className="flex flex-col">
                         <label htmlFor="emailIp">Email Address</label>
-                        <input type="email" id='emailIp' className='w-[300px] border-b-[2px] border-b-black border-solid outline-none'/>
+                        <input type="email" id='emailIp' className='w-[300px] border-b-[2px] border-b-black border-solid outline-none mb-3'/>
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="passwordIp">Password</label>
@@ -31,7 +31,7 @@ function Login() {
                         <button id="submitBtn" className='p-[10px] w-full mt-[30px] cursor-pointer border-none bg-[#F28C8C] text-white'>Continue</button>
                     </div>
                 </form>
-                <div className=" text-center">
+                <div className="text-center">
                     <p>or Connect with Social Media</p>
                 </div>
                 <div className="text-center bg-[#00ACEE] h-[30px] flex cursor-pointer  items-center justify-center text-white ">
