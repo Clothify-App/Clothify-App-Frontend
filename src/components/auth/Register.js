@@ -1,44 +1,46 @@
 import React from 'react'
-import './register.css'
 import {AiOutlineClose} from 'react-icons/ai'
 function Register() {
   return (
-    <div className='register'>
-        <div className="leftContent">
-            <h1>Welcome Back!</h1>
-            <p>To Keep Connected with us please<br />
+    <div className='min-h-[35rem] max-w-[1000px] flex m-auto relative top-[5rem] shadow-lg'>
+        <div className="flex-[0.5] bg-[#6FBCF3] flex items-center justify-center flex-col text-white font-body">
+            <h1 className='text-5xl'>Welcome Back!</h1>
+            <p className='text-base'>To Keep Connected with us please<br />
             login with your personal info</p>
-            <button id='signInBtn'>Sign In</button>
+            <button id='signInBtn' className='p-[10px] bg-transparent border-2 border-solid border-black w-[150px] rounded-2xl mt-[10px]'>Sign In</button>
         </div>
-        <div className="rightContent">
-            <div className="closeIcon">
+        <div className="flex-[0.5] bg-white p-[20px] flex flex-col items-center justify-center">
+            <div className="flex items-center w-[100%] justify-end cursor-pointer">
                     <AiOutlineClose />
             </div>
-            <div className="container">
-                <div className="facebookBtn">
+            <div className="flex flex-col h-[100%] w-[80%] justify-between">
+                <div className="text-center bg-[#3487E9] h-[50px] flex cursor-pointer  items-center justify-center text-white ">
                     <p>SIGN UP WITH FACEBOOK</p>
                 </div>
-                <div className="hrContent">
-                    <span><hr /></span>
-                    <span id="or"><p>or</p></span>
-                    <span><hr /></span>
+                <div className="flex justify-center items-center">
+                    <span className='w-[50%]'><hr /></span>
+                    <span className='mx-3'><p>or</p></span>
+                    <span className='w-[50%]'><hr /></span>
                 </div>
-                <div className="innerText">
+                <div className="text-center font-bold">
                      Sign up with your email address
                 </div>
-                <div className="form">
-                    <form action="">
-                        <input type="email" name="" id="" className='inputField' placeholder='Email'/>
-                        <input type="email" name="" id="" className='inputField' placeholder='Confirm email'/>
-                        <input type="password" name="" id="" className='inputField' placeholder='Password'/>
-                        <input type="date" name="" id="" className='inputField' placeholder='Date of Birth'/>
-                        <div className="radioOptions">
-                            <input type="radio" name="sex" id="radioOption1" /><label htmlFor="radioOption1">Male</label>
-                            <input type="radio" name="sex" id="radioOption2" /><label htmlFor="radioOption1">Female</label>
-                            <input type="radio" name="sex" id="radioOption3" /><label htmlFor="radioOption1">Non-binary</label>
+                <div className="w-[100%] h-[100%] mt-[15px]">
+                    <form action="" className='flex flex-col h-[90%] w-full justify-between'>
+                        <input type="email" name="email" id="" className='p-[5px] outline-none text-lg border-b-[2px] border-b-black border-solid w-[100%]' placeholder='Email'/>
+                        <input type="email" name="confirmEmail" id="" className='p-[5px] border-b-[2px] border-b-black border-solid outline-none text-lg' placeholder='Confirm email'/>
+                        <input type="password" name="password" id="" className='p-[5px] border-b-[2px] border-b-black border-solid outline-none text-lg' placeholder='Password'/>
+                        <div className="birthData">
+                            <label htmlFor="dateOfBirth">Date of Birth: </label>
+                            <input type="date" name="dob" id="dateOfBirth" className='p-[5px] border-b-[2px] border-b-black border-solid outline-none text-lg w-[100%]' placeholder='Date of Birth'/>
                         </div>
-                        <div className="signUp">
-                            <input type="submit" value="SIGN UP" />
+                        <div className="flex items-center justify-between">
+                            <input type="radio" name="sex" id="radioOption1" value="Male"/><label htmlFor="radioOption1">Male</label>
+                            <input type="radio" name="sex" id="radioOption2" value="Femal"/><label htmlFor="radioOption1">Female</label>
+                            <input type="radio" name="sex" id="radioOption3" value="NonBinary"/><label htmlFor="radioOption1">Non-binary</label>
+                        </div>
+                        <div className="flex items-center justify-center text-center">
+                            <p className='bg-green-700 p-[10px] border-none cursor-pointer text-white rounded-sm w-[100%]'>SIGN UP</p> 
                         </div>
                     </form>
                 </div>

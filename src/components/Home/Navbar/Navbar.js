@@ -23,7 +23,7 @@ const Navbar = () => {
         </p>
       </div>
 
-      <div className="middle w-1/3 justify-center duration-500 flex hover:w-1/2">
+      <div className="middle w-1/3 justify-center duration-700 flex hover:w-1/2">
         <div className="search flex items-center rounded-3xl border-2 border-gray-200 w-3/4  justify-between hover:border-[#ff3895]">
           <input
             type="text"
