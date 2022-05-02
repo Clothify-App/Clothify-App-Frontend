@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { BiSearchAlt2 } from "react-icons/bi";
 import icon from "../../../assets/icon.png";
 
-const Navbar = () => {
+const Navbar = ({ setlogin }) => {
   return (
     <div className="w-screen shadow-md h-16 px-5 flex bg-white  items-center justify-between fixed-top z-40 ">
       <img src={icon} alt="icon" className="float-left cursor-pointer" />
@@ -30,7 +30,8 @@ const Navbar = () => {
             name="search"
             id=""
             placeholder="Search Here"
-            className="w-11/12 p-[0.1rem] pl-5 m-[0.3rem] outline-none"
+            style={{ boxShadow: "none" }}
+            className="w-11/12 p-[0.1rem] pl-5 m-[0.3rem] outline-none border-none"
           />
           <span className="w-9 h-9 rounded-full bg-[#ff3895] flex items-center justify-center text-white m-1">
             <BiSearchAlt2 className="text-xl cursor-pointer" />
@@ -40,7 +41,14 @@ const Navbar = () => {
 
       <div className="right w-1/4 flex justify-end px-7 items-center">
         <p className="relative group cursor-pointer mx-5 border-2 border-pink-600 p-2 px-3 rounded-full hover:bg-pink-600">
-          <span className="group-hover:text-white">Sign Up / Sign In</span>
+          <span
+            className="group-hover:text-white"
+            onClick={() => {
+              setlogin(true);
+            }}
+          >
+            Sign Up / Sign In
+          </span>
         </p>
         {/* <span className="w-10 h-10 border-2 group border-pink-400 flex justify-center items-center rounded-full hover:bg-pink-400 cursor-pointer ">
           <FiUser className="mx-2 text-2xl group-hover:text-white" />
