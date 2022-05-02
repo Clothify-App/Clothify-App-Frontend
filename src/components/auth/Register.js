@@ -1,13 +1,13 @@
 import React from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
-function Register() {
+function Register({setLogin}) {
   return (
-    <div className='min-h-[35rem] max-w-[1000px] flex m-auto relative top-[5rem] shadow-lg'>
-        <div className="flex-[0.5] bg-[#6FBCF3] flex items-center justify-center flex-col text-white font-body">
+    <div className='fixed left-1/4 min-h-[35rem] max-w-[1000px] flex m-auto top-[5rem] shadow-lg'>
+        <div className="flex-[0.5] bg-[#6FBCF3] flex items-center justify-center flex-col text-white font-body p-10">
             <h1 className='text-5xl'>Welcome Back!</h1>
             <p className='text-base'>To Keep Connected with us please<br />
             login with your personal info</p>
-            <button id='signInBtn' className='p-[10px] bg-transparent border-2 border-solid border-black w-[150px] rounded-2xl mt-[10px]'>Sign In</button>
+            <button id='signInBtn' className='p-[10px] bg-transparent border-2 border-solid border-black w-[150px] rounded-2xl mt-[10px]' onClick={()=>{setLogin(true)}}>Sign In</button>
         </div>
         <div className="flex-[0.5] bg-white p-[20px] flex flex-col items-center justify-center">
             <div className="flex items-center w-[100%] justify-end cursor-pointer">

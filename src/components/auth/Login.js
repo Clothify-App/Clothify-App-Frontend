@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
-
+import Register from './Register';
 
 function Login() {
-  return (
-    <div className='min-h-[35rem] max-w-[1000px] flex m-auto relative top-[5rem] shadow-lg'>
-        <div className="flex-[0.5] bg-[#6FBCF3] flex items-center justify-center flex-col text-white font-body">
+    const[loginPage,setLoginPage] = useState(true);
+  return (<>
+      {loginPage?(
+    <div className='fixed left-1/4 min-h-[35rem] max-w-[1000px] flex m-auto top-[5rem] shadow-lg'>
+        <div className="flex-[0.5] bg-[#6FBCF3] flex items-center justify-center flex-col text-white font-body p-10">
             <h1 className='text-5xl'>Welcome Back!</h1>
             <p className='text-base'>To Keep Connected with us please<br />
             login with your personal info</p>
-            <button id='signUpBtn' className='p-[10px] bg-transparent border-2 border-solid border-black w-[150px] rounded-2xl mt-[10px]'>Sign Up</button>
+            <button id='signUpBtn' className='p-[10px] bg-transparent border-2 border-solid border-black w-[150px] rounded-2xl mt-[10px]' onClick={()=>{setLoginPage(false)}}>Sign Up</button>
         </div>
         <div className="flex-[0.5] bg-white p-[10px] flex flex-col items-start">
             <div className="flex items-center w-[100%] justify-end cursor-pointer">
@@ -42,7 +44,8 @@ function Login() {
                 </div>
             </div>
         </div>
-    </div>
+    </div>):<Register setLogin={setLoginPage}/>}
+    </>
   )
 }
 
