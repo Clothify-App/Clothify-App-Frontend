@@ -39,7 +39,6 @@ const Carousel = () => {
             loop
           >
             <source
-              className
               src="https://mdbootstrap.com/img/video/Lines.mp4"
               type="video/mp4"
             />
@@ -91,7 +90,6 @@ const Carousel = () => {
             loop
           >
             <source
-              className
               src="https://mdbootstrap.com/img/video/forest.mp4"
               type="video/mp4"
             />
@@ -118,7 +116,6 @@ const Carousel = () => {
             loop
           >
             <source
-              className
               src="https://mdbootstrap.com/img/video/Tropical.mp4"
               type="video/mp4"
             />

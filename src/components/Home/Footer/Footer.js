@@ -114,7 +114,7 @@ const Footer = () => {
       </div>
       <div className="mx-6 py-10 text-center md:text-left">
         <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className>
+          <div>
             <h6
               className="
         uppercase
@@ -148,7 +148,7 @@ const Footer = () => {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>
           </div>
-          <div className>
+          <div>
             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Products
             </h6>
@@ -173,7 +173,7 @@ const Footer = () => {
               </a>
             </p>
           </div>
-          <div className>
+          <div>
             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Useful links
             </h6>
@@ -198,7 +198,7 @@ const Footer = () => {
               </a>
             </p>
           </div>
-          <div className>
+          <div>
             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Contact
             </h6>
