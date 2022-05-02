@@ -39,13 +39,12 @@ const Navbar = () => {
       </div>
 
       <div className="right w-1/4 flex justify-end px-7 items-center">
-        <p className="relative group cursor-pointer mx-10">
-          <span className="group-hover:text-pink-600">Sign In</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-pink-400 transition-all group-hover:w-full"></span>
+        <p className="relative group cursor-pointer mx-5 border-2 border-pink-600 p-2 px-3 rounded-full hover:bg-pink-600">
+          <span className="group-hover:text-white">Sign Up / Sign In</span>
         </p>
-        <span className="w-10 h-10 border-2 group border-pink-400 flex justify-center items-center rounded-full hover:bg-pink-400 cursor-pointer ">
+        {/* <span className="w-10 h-10 border-2 group border-pink-400 flex justify-center items-center rounded-full hover:bg-pink-400 cursor-pointer ">
           <FiUser className="mx-2 text-2xl group-hover:text-white" />
-        </span>
+        </span> */}
       </div>
     </div>
   );
