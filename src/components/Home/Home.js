@@ -6,6 +6,7 @@ import Sections from "./Sections/Sections";
 import Footer from "./Footer/Footer";
 import Products from "../Products/Products";
 import Contact from "../Contact/Contact";
+import { Slide } from "react-reveal";
 
 const Home = () => {
   const [loginOpen, setLoginOpen] = useState(false);
