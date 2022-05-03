@@ -1,13 +1,15 @@
 import React,{useState} from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Register from "./Register";
+import {Slide} from 'react-reveal'
 
 function Login({ setlogin }) {
 
   const [loginRegisterToggle,setToggle] = useState(true);
   return (
-    <>
-    {loginRegisterToggle?(<div className="z-50 bg-opacity-60 h-screen fixed bg-black top-0 left-0 w-full">
+    <div>
+    {loginRegisterToggle?( <div className="z-50 bg-opacity-60 h-screen fixed bg-black top-0 left-0 w-full">
+    <Slide left>
       <div className="fixed left-1/4 min-h-[35rem] max-w-[1000px] flex m-auto  top-[5rem] shadow-lg">
         <div className="flex-[0.5] px-10 bg-login-pattern bg-no-repeat bg-top bg- bg-contain bg-[#ffffff] bg-opacity-96 z-90 flex items-center justify-center flex-col text-black font-body">
           <h1 className="text-4xl mt-[200px] mr-9">Welcome Back!</h1>
@@ -72,10 +74,9 @@ function Login({ setlogin }) {
             </div>
           </div>
         </div>
-      </div>
-    </div>):<Register setToggle={setToggle} setloginOpen={setlogin}/>}
-    </>
-    
+      </div></Slide>
+    </div> ):<Register setToggle={setToggle} setloginOpen={setlogin}/>}
+    </div>
   );
 }
 

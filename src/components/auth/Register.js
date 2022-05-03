@@ -1,8 +1,11 @@
 import React from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
+import {Slide} from 'react-reveal'
 function Register({setToggle,setloginOpen}) {
   return (
+      
     <div className="z-50 bg-opacity-60 h-screen fixed bg-black top-0 left-0 w-full">
+    <Slide right>
     <div className='fixed left-1/4 min-h-[35rem] w-[745px] flex m-auto top-[5rem] shadow-lg'>
         <div className="flex-[0.5] px-10 bg-login-pattern bg-no-repeat bg-top bg- bg-contain bg-[#ffffff] bg-opacity-96 flex items-center justify-center flex-col text-black font-body p-5">
             <h1 className='text-4xl text-center mt-[200px] mr-9'>Welcome Back!</h1>
@@ -54,6 +57,7 @@ function Register({setToggle,setloginOpen}) {
 
         </div>
     </div>
+    </Slide>
     </div>
   )
 }
