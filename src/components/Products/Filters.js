@@ -2,7 +2,7 @@ import React from "react";
 
 const Filters = () => {
   return (
-    <div className=" h-screen fixed w-1/6 flex flex-col border-r-2 border-pink-500">
+    <div className="w-1/6 h-full flex flex-col border-r-2 border-pink-500">
       <h3 className="text-2xl text-center mt-16 font-semibold">Filter By</h3>
       <div className="categories mt-5">
         <h3 className="text-2xl pl-10">Categories</h3>
