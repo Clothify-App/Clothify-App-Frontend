@@ -67,7 +67,7 @@ function Register({ setToggle, setloginOpen }) {
                     name="email"
                     id=""
                     className="p-[5px] border-b-[2px] border-b-black border-solid outline-none text-sm"
-                    placeholder="Confirm email"
+                    placeholder="email"
                   />
                   <input
                     type="password"
