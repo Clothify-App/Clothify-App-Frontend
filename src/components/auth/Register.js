@@ -56,15 +56,15 @@ function Register({ setToggle, setloginOpen }) {
                   className="flex flex-col h-[90%] w-full justify-between"
                 >
                   <input
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="name"
                     id=""
                     className="p-[5px] outline-none text-sm border-b-[2px] border-b-black border-solid w-[100%]"
-                    placeholder="Email"
+                    placeholder="Name"
                   />
                   <input
                     type="email"
-                    name="confirmEmail"
+                    name="email"
                     id=""
                     className="p-[5px] border-b-[2px] border-b-black border-solid outline-none text-sm"
                     placeholder="Confirm email"
