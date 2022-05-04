@@ -6,10 +6,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'login-pattern': "url('/src/assets/fill_form2.svg')",
-        
-      }
-    }
+        "login-pattern": "url('/src/assets/Wavy_Gen-01_Single-07.jpg')",
+      },
+    },
   },
   plugins: [require("tw-elements/dist/plugin")],
 };
