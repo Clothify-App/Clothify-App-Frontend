@@ -39,9 +39,9 @@ const Products = () => {
     );
   });
   return (
-    <div className="flex w-full justify-between absolute top-16">
+    <div className="flex w-full h-[90vh] mt-16 overflow-y-hidden">
       <Filters />
-      <div className="w-[80%] grid grid-cols-4 relative left-[18rem]">
+      <div className="w-5/6 grid grid-cols-4 relative overflow-y-scroll">
         {products}
       </div>
     </div>
