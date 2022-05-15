@@ -4,6 +4,7 @@ import icon from '../../assets/icon.png'
 import Profile from './Profile';
 import MyProducts from './MyProducts';
 import {Zoom} from 'react-reveal'
+import OrderHistory from './OrderHistory';
 
 function VerticalNavbar() {
 
@@ -16,7 +17,7 @@ function VerticalNavbar() {
                 return <MyProducts />;
                 break;
             case 3:
-                return <h1>Hello From Order History</h1>
+                return <OrderHistory />
                 break;
             default:
                 return <h1>Hello Chetan</h1>;
@@ -25,12 +26,12 @@ function VerticalNavbar() {
 
     const [navbarOption,setNavbarOption] = useState(1);
   return (
-    <div className='flex h-[100%]'>
+    <div className='flex h-full mt-16'>
         <div className="verticalNavbar p-2 flex-[0.2] h-screen bg-gray-100">
             <div className="imageContainer w-full border-b-2 border-black border-solid">
                 <img src={icon} alt="" className='object-contain m-auto'/>
             </div>
-            <div className="navbarOptions h-full">
+            <div className="navbarOptions h-[100%]">
                 <ul className='flex flex-col justify-start mt-10 h-[100%]'>
                     <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(1)}}>Profile</li>
                     <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(2)}}>My Products</li>

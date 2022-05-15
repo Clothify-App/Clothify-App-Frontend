@@ -1,35 +1,69 @@
-import React from 'react'
-import women from '../../assets/women.png'
-import icon from '../../assets/icon.png'
+import React from 'react';
+import men from '../../assets/men.jpg';
+import {AiOutlineMail} from 'react-icons/ai';
 
+import {BsTelephone} from 'react-icons/bs';
+import MiniProductCard from './MiniProductCard';
 function Profile() {
   return (
-        <div className="profileContent flex-[0.8] h-screen bg-slate-200 overflow-y-scroll overflow-x-hidden scrollbar-hide">
-            <div className="coverImg h-56 bg-gradient-to-r from-purple-500 to-pink-500 w-full mb-[6rem]">
-                <img src={women} className="profileImg h-36 w-36 rounded-full relative top-[10rem] left-16 " />
-            </div>
-            <div className="firstBio relative left-16">
-                <h1 className='font-semibold text-3xl'>Gulab Chameli</h1>
-                <h6 className='text-sm'>prathamesh@gmail.com</h6>
-            </div>
-            <div className="secondBio">
-                <fieldset className='border-2 border-black w-[80%] relative left-16'>
-                    <legend>Personalia:</legend>
-                    <div className="option1 flex my-2">
-                        <label htmlFor="" className='mx-2 font-bold'>Address:</label>
-                        <p>Dwarka Bhavan near datta mandir Morwadi Cidco Nashik-422009</p>
+        <div className="profileContent flex-[0.8] h-screen bg-white overflow-y-scroll overflow-x-hidden scrollbar-hide relative">
+           <div className="innerContainer max-h-[80%] top-[10%] absolute w-[100%] bg-white py-1 px-6 flex justify-evenly">
+                <div className="leftInfo max-h-full flex-[0.35] border-2 rounded-md flex flex-col">
+                    <div className="leftImageContainer h-[40%] w-full object-contain p-3 bg-[#F5F5F5]">
+                        <img src={men} alt="" className='h-[100%] w-[100%] object-contain'/>
                     </div>
-                    <div className="option1 flex my-2">
-                        <label htmlFor="" className='mx-2 font-bold'>Age:</label>
-                        <p>19</p>
+                    <div className="leftContactInfo p-3 h-[60%]">
+                        <h3 className='font-bold'>Contact Details</h3>
+                        <div className="leftTextOption flex flex-col my-2 border-b-2">
+                            <p className='mb-1 '>Name</p>
+                            <div className="innerText">
+                                <p className='text-lg'>Chetan Gamne</p>
+                            </div>
+                        </div>
+                        <div className="leftTextOption flex flex-col my-2 border-b-2">
+                            <p className='mb-1'>Email</p>
+                            <div className="innerText flex justify-between">
+                                <p className='text-lg'>Chetangamner12@gmail.com</p>
+                                <span>
+                                    <AiOutlineMail />
+                                </span>
+                            </div>
+                        </div>
+                        <div className="leftTextOption flex flex-col my-2 border-b-2">
+                            <p className='mb-1'>Phone Number</p>
+                            <div className="innerText flex justify-between">
+                                <p className='text-lg'>+91 9588601697</p>
+                                <span>
+                                    <BsTelephone />
+                                </span>
+                            </div>
+                        </div>
+                        <div className="leftTextOption flex flex-col my-2 border-b-2">
+                            <p className='mb-1'>Address</p>
+                            <div className="innerText">
+                                <p className='text-lg'>Dwarka Bhavan,Morwadi,Cidco,<br/>
+                                Nashik-422009</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="option1 flex my-2">
-                        <label htmlFor="" className='mx-2 font-bold'>Sex:</label>
-                        <p>Female</p>
+                </div>
+                <div className="rightInfo flex-[0.45] border-2 rounded-md flex flex-col">
+                    <div className="rightTopText border-b-2 flex-[0.1] flex items-center">
+                        <h2 className='w-full  text-center text-2xl font-bold'>Your Rented Products</h2>
                     </div>
-                    
-                </fieldset>
-            </div>
+                    <div className="rightMiddleSection flex-[0.8] flex flex-col p-2 overflow-y-scroll">
+                        <MiniProductCard />
+                        <MiniProductCard />
+                        <MiniProductCard />
+                        <MiniProductCard />
+                        <MiniProductCard />
+                    </div>
+                    <div className="decriptionText flex-[0.1] p-2">
+                        <p className='text-sm'>Disclaimer:
+                            If AnyKind Of fault or damaged Occured in product User will gets charged for Product whole original Price.</p>
+                    </div>
+                </div>
+           </div>
         </div>
   )
 }

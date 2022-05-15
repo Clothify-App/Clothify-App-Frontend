@@ -14,6 +14,9 @@ import { useState } from "react";
 import Footer from "./components/Home/Footer/Footer";
 import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import MyProducts from "./components/Profile/MyProducts";
+// import VerticalNavbar from "./components/Profile/VerticalNavbar";
+
+
 function App() {
   const [loginOpen, setLoginOpen] = useState(false);
   let isLoggedIn = false;
@@ -39,6 +42,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About setlogin={setLoginOpen} />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/dashboard" element={<VerticalNavbar />}>
+          
+        </Route>
       </Routes>
     </div>
   );
