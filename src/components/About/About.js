@@ -1,9 +1,10 @@
 import React from "react";
 import people from "../../assets/3495739.jpg";
+import { Link } from "react-router-dom";
 
-const About = ({ setlogin }) => {
+const About = () => {
   return (
-    <div className="relative  py-10  pt-44  bg-[#FDF0E0] h-screen">
+    <div className="relative  py-10  pt-28  bg-[#FDF0E0] h-screen">
       {/* <h3 className="text-center py-10  pt-28 text-3xl font-bold">About</h3> */}
       <div className="flex">
         <img src={people} className="w-1/2" alt="" />
@@ -16,15 +17,10 @@ const About = ({ setlogin }) => {
           </p>
           <h2 className="mt-10">
             So,{" "}
-            <span
-              className="text-blue-500 cursor-pointer"
-              onClick={() => {
-                setlogin(true);
-              }}
-            >
+            <Link to="/register" className="text-blue-500 cursor-pointer">
               Sign up
-            </span>{" "}
-            Today Now
+            </Link>{" "}
+            Now
           </h2>
         </h3>
       </div>
