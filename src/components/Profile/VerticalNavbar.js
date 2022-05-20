@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import women from '../../assets/women.png'
 import icon from '../../assets/icon.png'
 import Profile from './Profile';
 import MyProducts from './MyProducts';
-import {Zoom} from 'react-reveal'
 import OrderHistory from './OrderHistory';
+import AddProduct from './AddProduct';
 
 function VerticalNavbar() {
 
@@ -19,6 +18,8 @@ function VerticalNavbar() {
             case 3:
                 return <OrderHistory />
                 break;
+            case 4:
+                return <AddProduct setNavbarOption={setNavbarOption}/>
             default:
                 return <h1>Hello Chetan</h1>;
         }
@@ -35,6 +36,7 @@ function VerticalNavbar() {
                 <ul className='flex flex-col justify-start mt-10 h-[100%]'>
                     <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(1)}}>Profile</li>
                     <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(2)}}>My Products</li>
+                    <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(4)}}>Add Product</li>
                     <li className='my-2 text-center hover:bg-black hover:text-white hover:duration-300 cursor-pointer p-3 font-bold' onClick={()=>{setNavbarOption(3)}}>Order History</li>
                     <li className='my-2 text-center hover:bg-red-500 hover:text-white hover:duration-300 cursor-pointer p-3 font-bold'>Log Out</li>
                 </ul>

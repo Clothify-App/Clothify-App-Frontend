@@ -14,6 +14,7 @@ import { useState } from "react";
 import Footer from "./components/Home/Footer/Footer";
 import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import MyProducts from "./components/Profile/MyProducts";
+import Modal from "./components/Profile/Modal";
 // import VerticalNavbar from "./components/Profile/VerticalNavbar";
 
 

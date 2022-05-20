@@ -1,49 +1,31 @@
-import React,{useRef,useState} from 'react'
-import axios from 'axios'
+import React,{useState} from 'react'
+import ProductInfo from './ProductInfo'
+import Modal from './Modal'
+import FinalProduct from './FinalProduct'
 
+function AddProduct({setNavbarOption}) {
 
-function AddProduct({setaddProduct}) {
-    const title = useRef('')
-    const [fileIp,setFileIp] = useState()
-    const category = useRef('')
-    const description = useRef('')
-    const price = useRef(0)
-    const [sizes,setSizes] = useState([])
-    const [previewImg, setpreviewImg] = useState();
-    const tag = useRef('')
-    const deposit = useRef()
-
-    const onImageChange = async (e) => {
-        console.log(e.target.value);
-        const [file] = e.target.files;
-        setpreviewImg(URL.createObjectURL(file));
-        setFileIp(e.target.files[0])
-    };
-
-
-      
     
-
-    const handleImageUploading = async () => {
-        let body = new FormData()
-        body.set('key', '9f4aaf55f9d26955db31cfc61a79eb6b')
-        body.append('image', fileIp,fileIp.name)
-
-        await axios.post('https://api.imgbb.com/1/upload',body).then(Response => {
-            console.log(Response.data.data.display_url);
-        }).catch(error => {
-            console.log(`Unable to upload image..`,error);
-        })
-    }
-
+    const [title,setTitle] = useState('')
+    const [category,setCategory] = useState('')
+    const [description,setDescription] = useState('')
+    const [imgURL,setimgURL] = useState('')
+    const [price,setPrice] = useState(0)
+    const [color,setColor] = useState('')
+    const [forWhom,setForWhom] = useState('Male')
+    const [sizes,setSizes] = useState([])
+    const [toggle,setToggle] = useState(1); 
+    const [tag,setTag] = useState([])
+    const [deposit,setDeposit] = useState(0)
+    
+    // This Function will play a role of pushing data to collection
     const handleSubmit = (e) => {
-        e.preventDefault();
-        handleImageUploading();
-
-    }
-
-    const handleChange = () => {
-        document.getElementById('fileIp').click()
+        if(imgURL.length === 0){
+            window.alert("You should need to provide a image. Select image and crop according to your need and press upload button then submit")
+            return
+        }
+        console.log(title,category,description,imgURL,color,forWhom,price,sizes,tag,deposit);
+        setNavbarOption(2);
     }
 
     const handleSize = (event)=>{
@@ -51,7 +33,6 @@ function AddProduct({setaddProduct}) {
             if(prevState.indexOf(event.target.value) !== -1){
                 var index = prevState.indexOf(event.target.value)
                 prevState.splice(index,1)
-                // console.log(prevState);
                 return prevState
             }else{
                 var state = [...prevState]
@@ -59,63 +40,35 @@ function AddProduct({setaddProduct}) {
                 return state
             }
         })
-        console.log(sizes);
     }
+    function renderIem(param){
+        switch (param) {
+            case 1:
+                return <ProductInfo title={setTitle} category={setCategory} description={setDescription} handleSize={handleSize} price={setPrice} tag={setTag} deposit={setDeposit} handleSubmit={handleSubmit} setToggle={setToggle} color={setColor} setForWhom={setForWhom} forWhom={forWhom}/>;
+                break;
+            case 2:
+                return <Modal imgURL={imgURL} setimgURL={setimgURL} setToggle={setToggle} handleSubmit={handleSubmit}/>;
+                break;
+            case 3:
+                return <FinalProduct title={title} category={category} description={description} imgURL={imgURL} price={price} sizes={sizes} tag={tag} deposit={deposit} color={color} forWhom={forWhom} setToggle={setToggle} handleSubmit={handleSubmit}/>
+                break;
+            default:
+                return <h1>Hello Chetan</h1>;
+        }
+    };
+    
 
   return (
-    <div className='grid place-items-center min-h-[90vh]'>
-        <div className="innerContainer bg-white border-2 w-[80%] min-h-[40%] flex p-2">
-            <div className="imageContainer flex-[0.3] bg-[rgb(245,245,245)] grid place-items-center">
+      <div className="addProductContainer flex-[0.8] h-screen bg-white overflow-y-scroll overflow-x-hidden scrollbar-hide relative">
+    <div className='grid place-items-center min-h-[60vh] my-[5rem]'>
+        <div className="innerContainer bg-white border-2 w-[90%] h-full flex flex-col p-2 flex-wrap">
+            <div className="centerContainer h-full relative">
             {
-                previewImg && 
-                    <img src={previewImg} alt="" className='w-full h-[300px] object-contain' />
+                renderIem(toggle)
             }
-            <>
-                <input type="file" accept='image/*' id='fileIp' className='w-[100%]' style={{display: "none"}} onChange={onImageChange}/>
-                <button onClick={handleChange} className='bg-white w- p-1 px-2 border-2 border-black rounded-md hover:bg-[#f5f5f5]'>Upload Image</button>
-                </>
-            </div>
-            <div className="productInfo flex-[0.7] p-2">
-                <form action="" className='flex flex-col' onSubmit={() => handleSubmit()}>
-                    <input type="Text" placeholder='Title' className='p-2 border-b-2 focus:border-black outline-none' ref={title}/>
-                    <input type="Text" placeholder='Category' className='p-2 border-b-2 focus:border-black outline-none' ref={category}/>
-                    <input type="Text" placeholder='Description' className='p-2 border-b-2 focus:border-black outline-none' ref={description}/>
-                    <label htmlFor="" className='p-2'>Select Available Sizes</label>
-                    <div class="flex justify-evenly">
-                        <div class="form-check">
-                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="small" name='small' id="flexCheckDefault" onChange={handleSize}/>
-                        <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
-                            Small
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="medium" name='medium' id="flexCheckChecked" onChange={handleSize}/>
-                        <label class="form-check-label inline-block text-gray-800" for="flexCheckChecked">
-                            Medium
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="large" name='large' id="flexCheckChecked" onChange={handleSize}/>
-                        <label class="form-check-label inline-block text-gray-800" for="flexCheckChecked" >
-                            Large
-                        </label>
-                        </div>
-                        <div class="form-check">
-                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="extraLarge" name='extraLarge' id="flexCheckChecked" onChange={handleSize}/>
-                        <label class="form-check-label inline-block text-gray-800" for="flexCheckChecked" >
-                            Extra Large
-                        </label>
-                        </div>
-                    </div>
-                    <input type="number" placeholder='Price' min='0' className='p-2 border-b-2 focus:border-black outline-none' ref={price}/>
-                    <input type="text" name="tag" id="" placeholder='Enter a Tag' className='p-2 border-b-2 focus:border-black outline-none' ref={tag}/>
-                    <input type="number" name="" id="" placeholder='Security Deposit' className='p-2 border-b-2 focus:border-black outline-none' ref={deposit}/>
-                    <div className="submitBtn flex justify-end mt-3 items-center">
-                        <button className='p-2 px-5 bg-black text-white font-semibold cursor-pointer' onClick={handleSubmit}>Submit</button>
-                    </div>
-                </form>
             </div>
         </div> 
+    </div>
     </div>
   )
 }

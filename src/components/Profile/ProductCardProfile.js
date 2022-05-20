@@ -1,7 +1,9 @@
 import React from 'react'
-import women from '../../assets/women.png'
 
-function ProductCard({title,category,imageUrl,price,description}) {
+// Currently We are fethcing from fake API so we need to render according to their attributes but soon we will change to our need
+
+
+function ProductCardProfile({title,category,imageUrl,price,description}) {
   return (
     <div className='bg-[#F5F5F5] rounded-md p-4 flex my-2'>
         <div className="imageContent flex-[0.2] p-1 bg-white">
@@ -29,4 +31,4 @@ function ProductCard({title,category,imageUrl,price,description}) {
   )
 }
 
-export default ProductCard
+export default ProductCardProfile
