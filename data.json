@@ -1,0 +1,257 @@
+// Party - 15 Entries - 5 men, 5 women,5kids
+// gathering - - 15 Entries - 5 men, 5 women,5kids
+// wedding - - 15 Entries - 5 men, 5 women,5kids
+// Casual - 15 Entries - 5 men, 5 women,5kids
+
+
+Party Wear Completed...... :)
+
+[{
+  category: "Athena",
+  title: "Black Tulip Wrap Dress With Volume Sleeves",
+  rentPrice: 300,
+  description: "Black solid wrap dress
+  V-neck
+  Short, puff sleeve
+  Gathered or pleated detail
+  Above knee length in tulip hem
+  Knitted fabric",
+  color:"Black",
+  forWhom:"Female",
+  sizesAvailable:["XL","L","S","M","XXL"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 500,
+  quantityAvailable: 1,
+  ownerName: "Srinidhi Collection",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/14827890/2021/7/14/169335c9-3ded-43b9-86d8-1be9ade57fd11626270737346AthenaBlackDress1.jpg",
+  rating: 3,
+},
+{
+  category: "Athena",
+  title: "Stylish Black Ruffled Tulle Dress",
+  rentPrice: 400,
+  description: "Look extraordinary and make heads turn when you step out wearing this dress. Designed with solid pattern and short regular sleeves, this dress will accentuate your silhouette beautifully. 
+  Stylish black colour
+  Alluring solid tulle dress
+  Short regular sleeves
+  Polyester, machine wash",
+  color:"Black",
+  forWhom:"Female",
+  sizesAvailable:["XL","L","S","M","XXL"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 600,
+  quantityAvailable: 1,
+  ownerName: "Srinidhi Collection",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15227152/2021/9/8/2fa26318-9240-4ce8-8b28-2b44598dc1bf1631091884618-Athena-Black-Maxi-Tulle-Dress-with-Organza-Ruffled-shoulder--1.jpg",
+  rating: 3,
+},{
+  category: "Athena",
+  title: "Women Bright Pink Solid Pleated Form Dress",
+  rentPrice: 400,
+  description: "Boasting a unique and fashionable appearance, pleated forms include box pleats, knife pleats, and accordion pleats in several outfits. They are designed in prints, like plaid, stripes, etc. and are further enhanced with key details, such as wrap-ups, belts, and high waists.",
+  color:"Pink",
+  forWhom:"Female",
+  sizesAvailable:["XL","L","S","M","XXL"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 800,
+  quantityAvailable: 1,
+  ownerName: "Srinidhi Collection",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/17650672/2022/4/1/34c45f03-aaf5-404d-a133-3283c8bb1c181648806890275-Athena-Pink-pleated-off-shoulder-maxi-dress-6651648806889771-1.jpg",
+  rating: 3,
+},
+{
+  category: "DEEBACO",
+  title: "Turquoise Blue Tropical Printed Smocked Fit & Flare Dress With Shrug",
+  rentPrice: 300,
+  description: "Look extraordinary and make heads turn when you step out wearing this dress. Designed with solid pattern and short regular sleeves, this dress will accentuate your silhouette beautifully. 
+  Stylish black colour
+  Alluring solid tulle dress
+  Short regular sleeves
+  Polyester, machine wash",
+  color:"Blue",
+  forWhom:"Female",
+  sizesAvailable:["XL","L","S","M","XXL"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 600,
+  quantityAvailable: 1,
+  ownerName: "Srinidhi Collection",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/14483862/2021/11/30/dd646a9c-7ef0-4f8d-a766-973cb7875c281638282711106-DEEBACO-Turquoise-Blue-Tropical-Printed-Smocked-Fit--Flare-D-1.jpg",
+  rating: 3,
+},
+{
+  category: "W",
+  title: "Women Taupe & Golden Zari Woven Design Straight Kurta",
+  rentPrice: 400,
+  description: "Look extraordinary and make heads turn when you step out wearing this dress. Designed with solid pattern and short regular sleeves, this dress will accentuate your silhouette beautifully. 
+  Stylish black colour
+  Alluring solid tulle dress
+  Short regular sleeves
+  Polyester, machine wash",
+  color:"Golden",
+  forWhom:"Female",
+  sizesAvailable:["XL","L","S","M","XXL"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 600,
+  quantityAvailable: 1,
+  ownerName: "Srinidhi Collection",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/13078228/2022/5/2/38655879-6ce1-43bf-bb6a-b7858022c4bf1651493484464-W-Women-Taupe--Golden-Zari-Woven-Design-Straight-Kurta-85516-1.jpg",
+  rating: 3,
+},{
+  category: "RARE RABBIT",
+  title: "Men Maroon Solid Slim-Fit Velvet Bandhgala Blazer",
+  rentPrice: 1000,
+  description: "Maroon solid bandhgala blazer, has a mandarin collar, long sleeves, a full button placket, three pockets",
+  color:"Maroon",
+  forWhom:"Men",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 3000,
+  quantityAvailable: 1,
+  ownerName: "Sreeyash Nathe",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16421140/2021/12/8/cfdda0d5-7a3a-48c2-8152-d432addf23271638944937155Blazers1.jpg",
+  rating: 3,
+},{
+  category: "Allen Solly",
+  title: "Men Navy Blue Solid Slim Fit Single-Breasted 3-Piece Party Suit",
+  rentPrice: 2000,
+  description: "This slim fit suit consists of a blazer, waistcoat, a pair of trousers and a bow tie
+  Navy blue solid slim fit party blazer, has a notched lapel, single-breasted with double-button closures, long sleeves, two flap pockets, one chest welt pocket",
+  color:"Navy Blue",
+  forWhom:"Men",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 8000,
+  quantityAvailable: 1,
+  ownerName: "Sreeyash Nathe",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16550864/2021/12/17/58b2e672-26fe-4f53-9641-4072634e73af1639755465550AllenSollyMenNavyBlueSolidSlimFitSingle-Breasted3-PieceParty1.jpg",
+  rating: 3,
+},{
+  category: "Blackberrys",
+  title: "Men Grey & Navy Blue Checked Slim Fit Single-Breasted Partywear 3-Piece Suit",
+  rentPrice: 800,
+  description: "Maroon solid bandhgala blazer, has a mandarin collar, long sleeves, a full button placket, three pockets",
+  color:"Grey",
+  forWhom:"Men",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 3000,
+  quantityAvailable: 1,
+  ownerName: "Sreeyash Nathe",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/11880188/2020/6/6/eac5f87d-b1b1-4ff5-b54e-e8b736384cea1591431181362-Blackberrys-Men-Suits-5661591431177683-1.jpg",
+  rating: 3,
+},{
+  category: "Wintage",
+  title: "Men Magenta Solid Regular Fit Party Suit",
+  rentPrice: 500,
+  description: "Maroon solid bandhgala blazer, has a mandarin collar, long sleeves, a full button placket, three pockets",
+  color:"Magenta",
+  forWhom:"Men",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 1000,
+  quantityAvailable: 1,
+  ownerName: "Sreeyash Nathe",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/productimage/2019/9/10/c77f2c10-b63f-44f8-8656-d00be0b87b3f1568133930522-1.jpg",
+  rating: 3,
+},{
+  category: "LUXURAZI",
+  title: "Men Black Solid Single-Breasted Tailored-Fit Party Suit",
+  rentPrice: 1000,
+  description: "Black solid suit
+  Black solid blazer, has a peaked lapel, single-breasted with a single button closure, long sleeves, a welt pocket and two flap pockets, a double-vented hem on the back",
+  color:"Black",
+  forWhom:"Men",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 3000,
+  quantityAvailable: 1,
+  ownerName: "Sreeyash Nathe",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/productimage/2021/1/6/34e24ffd-a1d4-4228-9787-4e72922d652c1609925143073-1.jpg",
+  rating: 3,
+},
+{
+  category: "FOURFOLDS",
+  title: "Boys Maroon & White Shirt with Trousers & Waistcoat",
+  rentPrice: 300,
+  description: "This clothing set consists of Shirt and Trousers
+  White solid Shirt ,has a shirt collar, long sleeves",
+  color:"Maroon",
+  forWhom:"Kids",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 500,
+  quantityAvailable: 1,
+  ownerName: "Nikhil Vaje",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15463668/2021/9/14/fc9b4ba2-0b90-416a-80a3-9caf013bc2771631624311361ClothingSet1.jpg",
+  rating: 3,
+},
+{
+  category: "Jeetethnics",
+  title: "Boys Grey & White Checked Suit",
+  rentPrice: 300,
+  description: "This suit consists of a suit, a waistcoat, a shirt and a bow tie
+  Grey and white single-breasted checked blazer, has a notched lapel, single button closure, long sleeves, three pockets",
+  color:"Grey",
+  forWhom:"Kids",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 600,
+  quantityAvailable: 1,
+  ownerName: "Nikhil Vaje",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/9300599/2019/4/15/ebbd0baa-75d0-41cd-a2d3-1cf02efaa56a1555315433301-Jeetethnics-Grey-Boys-Clothing-Set-6121555315432004-1.jpg",
+  rating: 3,
+},
+{
+  category: "Jeetethnics",
+  title: "Boys Black & White Co-Ord Set",
+  rentPrice: 400,
+  description: "This clothing set consists of Shirt and Trousers
+  White solid Shirt ,has a shirt collar, long sleeves",
+  color:"Black",
+  forWhom:"Kids",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 800,
+  quantityAvailable: 1,
+  ownerName: "Nikhil Vaje",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/productimage/2020/12/17/6ddddad8-1ff1-479e-bfdf-2ca492ab043f1608194003450-1.jpg",
+  rating: 3,
+},
+{
+  category: "Pink Chick",
+  title: "Navy Blue Colourblocked Layered Satin Dress",
+  rentPrice: 400,
+  description: "Navy blue colourblocked fit & flare dress
+  Round neck
+  Short, flutter sleeve
+  Layered detail
+  Knee length in flared hem",
+  color:"Pink",
+  forWhom:"Kids",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 500,
+  quantityAvailable: 1,
+  ownerName: "Nikhil Vaje",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/16491076/2021/12/13/92092f8f-921e-4d52-8b0c-d9b04bb72ebd1639372865809PinkChickNavyBlueColourblockedLayeredSatinDress1.jpg",
+  rating: 3,
+},
+{
+  category: "Pink Chick",
+  title: "Burgundy Embellished Net Maxi Dress",
+  rentPrice: 400,
+  description: "Burgundy embellished fit & flare dress
+  V-neck
+  Sleeveless, no sleeves
+  Ruffled detail
+  Maxi length in straight he",
+  color:"Maroon",
+  forWhom:"Kids",
+  sizesAvailable:["XL","L","S","M"],
+  tags:["Party Wear","Casual Wear","Gathering"],
+  refundableAmount: 800,
+  quantityAvailable: 1,
+  ownerName: "Nikhil Vaje",
+  image: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/17585554/2022/3/19/9c1e386b-7755-4242-b372-80f525488a3b1647696366393PinkChickBurgundyNetSheathDress1.jpg",
+  rating: 3,
+}]

@@ -4,7 +4,7 @@ const Carousel = () => {
   return (
     <div
       id="carouselExampleCaptionsFull"
-      className="carousel slide carousel-fade relative h-screen z-0 m-5"
+      className="carousel slide carousel-fade relative h-screen z-0"
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
