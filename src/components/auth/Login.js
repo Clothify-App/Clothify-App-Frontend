@@ -1,21 +1,49 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { useAuth } from "../../Context/AuthContext";
 import Loader from "../Loader/Loader";
 import { useNavigate, Link } from "react-router-dom";
+import usersServices from "../../Services/users.services";
 function Login() {
   const email = useRef("");
   const password = useRef("");
-  const { login, signUpWithGoogle, signUpWithFacebook } = useAuth();
+  const { login, signUpWithGoogle, signUpWithFacebook, setUserID, userID } =
+    useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleSignFacebook = async (e) => {
     try {
-      let user = await signUpWithFacebook();
-      console.log(user);
+      let userDetails = await signUpWithFacebook();
+      let { email } = userDetails.user;
+      let id;
+      await usersServices
+        .checkIfUserExist(email)
+        .then(async (res) => {
+          let user = res.docs;
+          let userExist = user.length;
+          if (!userExist) {
+            let newUser = {
+              fullName: userDetails.user.displayName,
+              email: userDetails.user.email,
+              image: userDetails.user.photoURL,
+            };
+            const UserRes = await usersServices.addUser(newUser);
+            id = UserRes.id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          } else {
+            id = user[0].id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          }
+        })
+        .catch((err) => console.log(err));
+      // console.log(userID);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
@@ -24,8 +52,34 @@ function Login() {
 
   const handleSignGoogle = async (e) => {
     try {
-      let user = await signUpWithGoogle();
-      console.log(user);
+      let userDetails = await signUpWithGoogle();
+      let { email } = userDetails.user;
+      let id;
+      await usersServices
+        .checkIfUserExist(email)
+        .then(async (res) => {
+          let user = res.docs;
+          let userExist = user.length;
+          if (!userExist) {
+            let newUser = {
+              fullName: userDetails.user.displayName,
+              email: userDetails.user.email,
+              image: userDetails.user.photoURL,
+            };
+            const UserRes = await usersServices.addUser(newUser);
+            id = UserRes.id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          } else {
+            id = user[0].id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          }
+        })
+        .catch((err) => console.log(err));
+      // console.log(userID);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);

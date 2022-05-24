@@ -8,7 +8,8 @@ export function useAuth() {
 }
 
 const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState("");
+  const [userID, setUserID] = useState(localStorage.getItem("userID"));
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
   }
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
   }
 
   function logout() {
+    localStorage.removeItem("userID");
     return auth.signOut();
   }
 
@@ -40,6 +42,8 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    userID,
+    setUserID,
     signup,
     login,
     logout,

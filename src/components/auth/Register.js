@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { useAuth } from "../../Context/AuthContext";
-import UserServices from "../../Services/users.services";
+import usersServices from "../../Services/users.services";
 import Loader from "../Loader/Loader";
 function Register() {
   const email = useRef("");
@@ -12,20 +12,40 @@ function Register() {
   const dob = useRef("");
   const fullName = useRef("");
   const [gender, setGender] = useState("");
-  const { signup, signUpWithGoogle, signUpWithFacebook } = useAuth();
+  const { signup, signUpWithGoogle, signUpWithFacebook, setUserID } = useAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignGoogle = async (e) => {
     try {
-      let userDetail = await signUpWithGoogle();
-      let newUser = {
-        fullName: userDetail.user.displayName,
-        email: userDetail.user.email,
-      };
-      const UserRes = await UserServices.addUser(newUser);
-      var UserID = UserRes.id;
-      console.log(newUser, UserID);
+      let userDetails = await signUpWithGoogle();
+      let { email } = userDetails.user;
+      let id;
+      await usersServices
+        .checkIfUserExist(email)
+        .then(async (res) => {
+          let user = res.docs;
+          let userExist = user.length;
+          if (!userExist) {
+            let newUser = {
+              fullName: userDetails.user.displayName,
+              email: userDetails.user.email,
+              image: userDetails.user.photoURL,
+            };
+            const UserRes = await usersServices.addUser(newUser);
+            id = UserRes.id;
+            localStorage.setItem("userID", id);
+            // console.log(id);
+            setUserID(id);
+          } else {
+            id = user[0].id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          }
+        })
+        .catch((err) => console.log(err));
+      // console.log(userID);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
@@ -34,33 +54,57 @@ function Register() {
 
   const handleSignFacebook = async (e) => {
     try {
-      let userDetail = await signUpWithFacebook();
-      let newUser = {
-        fullName: userDetail.user.displayName,
-        email: userDetail.user.email,
-      };
-      const UserRes = await UserServices.addUser(newUser);
-      var UserID = UserRes.id;
-      console.log(newUser, UserID);
+      let userDetails = await signUpWithFacebook();
+      let { email } = userDetails.user;
+      let id;
+      await usersServices
+        .checkIfUserExist(email)
+        .then(async (res) => {
+          let user = res.docs;
+          let userExist = user.length;
+          if (!userExist) {
+            let newUser = {
+              fullName: userDetails.user.displayName,
+              email: userDetails.user.email,
+              image: userDetails.user.photoURL,
+            };
+            const UserRes = await usersServices.addUser(newUser);
+            id = UserRes.id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          } else {
+            id = user[0].id;
+            // console.log(id);
+            localStorage.setItem("userID", id);
+            setUserID(id);
+          }
+        })
+        .catch((err) => console.log(err));
+      // console.log(userID);
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
   };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     const newUser = {
       email: email.current.value,
       dob: dob.current.value,
       fullName: fullName.current.value,
+      image:
+        "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=",
       gender: gender,
     };
     console.log(newUser);
     try {
       setLoading(true);
       await signup(email.current.value, password.current.value);
-      const UserRes = await UserServices.addUser(newUser);
-      var UserID = UserRes.id;
+      const UserRes = await usersServices.addUser(newUser);
+      let id = UserRes.id;
+      setUserID(id);
       navigate("/dashboard");
     } catch (err) {
       console.log("Please Enter Details or Firebase Error.", err);

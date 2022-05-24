@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
 import { useProduct } from "../../Context/ProductContext";
@@ -7,12 +7,13 @@ import { useAuth } from "../../Context/AuthContext";
 import { MdSpaceDashboard } from "react-icons/md";
 
 const Navbar = () => {
+  const searchQuery = useRef("");
   const location = useLocation();
   const { CartProducts } = useProduct();
   const { currentUser } = useAuth();
   return (
     <>
-      <div className="w-full shadow-md h-16 px-5 flex bg-white  items-center justify-between sticky-top z-40 ">
+      <div className="w-full  shadow-md h-16 px-5 flex bg-white  items-center justify-between sticky-top z-40 ">
         <Link to="/">
           {/* <img src={icon} alt="icon" className="float-left cursor-pointer" /> */}
           <h1
@@ -91,11 +92,12 @@ const Navbar = () => {
         </div>
 
         <div className="middle w-1/3 justify-center duration-700 flex hover:w-1/2">
-          <div className="search flex items-center rounded-3xl border-2 border-gray-200 w-3/4  justify-between hover:border-[#ff3895]">
+          <form className="search flex items-center rounded-3xl border-2 border-gray-200 w-3/4  justify-between hover:border-[#ff3895]">
             <input
               type="text"
               name="search"
               id=""
+              ref={searchQuery}
               placeholder="Search Here"
               style={{ boxShadow: "none" }}
               className="w-11/12 p-[0.1rem] pl-5 m-[0.3rem] outline-none border-none"
@@ -103,10 +105,10 @@ const Navbar = () => {
             <span className="w-9 h-9 rounded-full bg-[#ff3895] flex items-center justify-center text-white m-1">
               <BiSearchAlt2 className="text-xl cursor-pointer" />
             </span>
-          </div>
+          </form>
         </div>
 
-        {currentUser ? (
+        {localStorage.getItem("userID") ? (
           <div className="right w-1/4 flex justify-end gap-5  items-center">
             <Link
               to="/dashboard"

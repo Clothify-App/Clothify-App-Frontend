@@ -5,70 +5,17 @@ export function useProduct() {
   return useContext(ProductContext);
 }
 const ProductProvider = ({ children }) => {
-  const cartProdts = [
-    {
-      id: 1,
-      title: "Mens Casual Premium Slim Fit T-Shirts ",
-      price: 22.3,
-      description:
-        "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      category: "men's clothing",
-      refundableAmount: 20,
-      ownerName: "Prathamesh Moharkar",
-      quantity: 1,
-      image:
-        "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      rating: { rate: 4.1, count: 259 },
-    },
-    {
-      id: 2,
-      title: "Mens Casual Premium Slim Fit T-Shirts ",
-      price: 22.3,
-      description:
-        "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      category: "men's clothing",
-      refundableAmount: 20,
-      ownerName: "Prathamesh Moharkar",
-      quantity: 1,
-      image:
-        "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      rating: { rate: 4.1, count: 259 },
-    },
-    {
-      id: 3,
-      title: "Mens Casual Premium Slim Fit T-Shirts ",
-      price: 22.3,
-      description:
-        "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      category: "men's clothing",
-      refundableAmount: 20,
-      quantity: 1,
-      ownerName: "Prathamesh Moharkar",
-      image:
-        "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      rating: { rate: 4.1, count: 259 },
-    },
-  ];
-
-  let initialTotalPrice = 0;
-  let initialTotalRefundable = 0;
-  cartProdts.map((product) => {
-    initialTotalPrice += product.price;
-    initialTotalRefundable += product.refundableAmount;
-  });
-  const [totalPrice, setTotalPrice] = useState(initialTotalPrice);
-  const [totalRefundable, setTotalRefundable] = useState(
-    initialTotalRefundable
-  );
-  const [CartProducts, setCartProducts] = useState(cartProdts);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalRefundable, setTotalRefundable] = useState(0);
+  const [CartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const incrementQuantity = (index) => {
     let newCartProducts = [...CartProducts];
-    newCartProducts[index].quantity++;
+    newCartProducts[index].quantityAvailable++;
     let newtotalRefundable =
       totalRefundable + newCartProducts[index].refundableAmount;
-    let newtotalPrice = totalPrice + newCartProducts[index].price;
+    let newtotalPrice = totalPrice + newCartProducts[index].rentPrice;
     setTotalPrice(newtotalPrice);
     setTotalRefundable(newtotalRefundable);
     setCartProducts(newCartProducts);
@@ -76,13 +23,13 @@ const ProductProvider = ({ children }) => {
 
   const decrementQuantity = (index) => {
     let newCartProducts = [...CartProducts];
-    if (newCartProducts[index].quantity === 1) {
+    if (newCartProducts[index].quantityAvailable === 1) {
       removeItem(index);
     } else {
-      newCartProducts[index].quantity--;
+      newCartProducts[index].quantityAvailable--;
       let newtotalRefundable =
         totalRefundable - newCartProducts[index].refundableAmount;
-      let newtotalPrice = totalPrice - newCartProducts[index].price;
+      let newtotalPrice = totalPrice - newCartProducts[index].rentPrice;
       setTotalPrice(newtotalPrice);
       setTotalRefundable(newtotalRefundable);
       setCartProducts(newCartProducts);
@@ -93,32 +40,39 @@ const ProductProvider = ({ children }) => {
     let newCartProducts = [...CartProducts];
     let newtotalPrice =
       totalPrice -
-      newCartProducts[index].price * newCartProducts[index].quantity;
+      newCartProducts[index].rentPrice *
+        newCartProducts[index].quantityAvailable;
     let newtotalRefundable =
       totalRefundable -
-      newCartProducts[index].refundableAmount * newCartProducts[index].quantity;
+      newCartProducts[index].refundableAmount *
+        newCartProducts[index].quantityAvailable;
     newCartProducts.splice(index, 1);
     setTotalRefundable(newtotalRefundable);
     setTotalPrice(newtotalPrice);
     setCartProducts(newCartProducts);
   };
 
-  const addItem = (product) => {
+  const addItem = (product, id) => {
     let newCartProducts = [...CartProducts];
     let newProduct = {
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      description: product.description,
+      id: id,
       category: product.category,
-      refundableAmount: 20,
-      quantity: 1,
-      ownerName: "Prathamesh Moharkar",
+      title: product.title,
+      rentPrice: parseInt(product.rentPrice),
+      description: product.description,
+      color: product.color,
+      forWhom: product.forWhom,
+      sizesAvailable: product.sizesAvailable,
+      tags: product.tags,
+      refundableAmount: parseInt(product.refundableAmount),
+      quantityAvailable: 1,
+      ownerName: product.ownerName,
       image: product.image,
-      rating: product.rating,
+      rating: 3,
     };
+    console.log(newProduct);
     newCartProducts.push(newProduct);
-    let newtotalPrice = totalPrice + newProduct.price;
+    let newtotalPrice = totalPrice + newProduct.rentPrice;
     let newtotalRefundable = totalRefundable + newProduct.refundableAmount;
     setTotalPrice(newtotalPrice);
     setTotalRefundable(newtotalRefundable);

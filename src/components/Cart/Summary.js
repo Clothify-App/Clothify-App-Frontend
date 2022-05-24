@@ -1,6 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useProduct } from "../../Context/ProductContext";
+import Loader from "../Loader/Loader";
 
-export default function Summary({ totalPrice, totalRefundable }) {
+export default function Summary({ totalPrice, totalRefundable, CartProducts }) {
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const handlePayment = async () => {
+    setPaymentLoading(true);
+    try {
+      const data = {
+        checkoutData: CartProducts.map((product) => ({
+          ...{ id: product.id, quantity: product.quantityAvailable },
+        })),
+      };
+      await axios
+        .post("http://localhost:80/checkout", data)
+        .then((res) => res.data)
+        .then((location) => {
+          // console.log(location.url);
+          window.location = location.url;
+        });
+    } catch (e) {
+      console.log(e);
+    }
+    setPaymentLoading(false);
+  };
   return (
     <div id="summary" className="w-1/4 px-8 py-10 bg-white mt-10 h-[30rem]">
       <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
@@ -38,9 +62,33 @@ export default function Summary({ totalPrice, totalRefundable }) {
             &#8377;{(totalPrice + totalRefundable).toFixed(2)}
           </span>
         </div>
-        <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-          Checkout
-        </button>
+
+        {!paymentLoading ? (
+          <button
+            disabled={CartProducts.length < 1 ? true : false}
+            onClick={() => handlePayment()}
+            className={
+              CartProducts.length < 1
+                ? "bg-indigo-200 font-semibold  py-3 text-sm text-white uppercase w-full"
+                : "bg-indigo-500 font-semibold hover:shadow-md py-3 text-sm text-white uppercase w-full"
+            }
+          >
+            <h3>Checkout</h3>
+          </button>
+        ) : (
+          <button
+            onClick={handlePayment}
+            className="bg-indigo-500 font-semibold hover:shadow-md py-3 text-sm text-white uppercase w-full"
+          >
+            <span className="flex items-center justify-center gap-1">
+              <Loader
+                size={20}
+                borderColor={"white"}
+                borderTopColor={"transparent"}
+              />
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

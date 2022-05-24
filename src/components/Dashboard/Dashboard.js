@@ -1,34 +1,20 @@
 import React from "react";
 import Navbar from "../Home/Navbar";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext";
+import { useState } from "react";
+import VerticalNavbar from "./VerticalNavbar";
+import RenderedItem from "./RenderedItem";
 const Dashboard = () => {
-  const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/");
-    } catch (err) {}
-  };
+  const [navbarOption, setNavbarOption] = useState(1);
   return (
     <>
       <Navbar />
-      <div className="mt-16">
-        Hi this is Your Dashboard => {currentUser.email}
+      <div className=" bg-gray-100 flex w-full gap-3 h-[91vh] justify-between">
+        <VerticalNavbar setNavbarOption={setNavbarOption} />
+        <RenderedItem
+          navbarOption={navbarOption}
+          setNavbarOption={setNavbarOption}
+        />
       </div>
-      <button onClick={handleLogout} className="link-primary">
-        Logout
-      </button>
-
-      <h6
-        className="link-primary"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Home
-      </h6>
     </>
   );
 };
