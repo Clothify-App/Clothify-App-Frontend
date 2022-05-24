@@ -11,7 +11,9 @@ import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "../components/Private/PrivateRoute";
 import Image from "../Image";
 import ProductPage from "../Pages/ProductPage";
-import Invoice from "./Invoice/InvoicePage";
+import Invoice from "./Payments/InvoicePage";
+import Cancel from "./Payments/Cancel";
+import NoMatch from "./NoMatch/NoMatch";
 
 function Navigations() {
   return (
@@ -26,6 +28,7 @@ function Navigations() {
       <Route path="/image" element={<Image />} />
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/invoice" element={<Invoice />} />
+      <Route path="/cancel" element={<Cancel />} />
       <Route
         path="/dashboard"
         element={
@@ -34,6 +37,7 @@ function Navigations() {
           </PrivateRoute>
         }
       />
+      <Route path="*" element={<NoMatch />} />
     </Routes>
   );
 }

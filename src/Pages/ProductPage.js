@@ -6,18 +6,7 @@ import { useParams } from "react-router-dom";
 import { useProduct } from "../Context/ProductContext";
 import Loader from "../components/Loader/Loader";
 import axios from "axios";
-const PRODUCT_API = process.env.REACT_APP_PRODUCT_API;
-
-const getProducts = async () => {
-  return axios
-    .get(PRODUCT_API)
-    .then((products) => {
-      return products;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+import productsServices from "../Services/products.services";
 
 export default function ProductPage() {
   const { loading, setLoading } = useProduct();
@@ -25,22 +14,16 @@ export default function ProductPage() {
   let { id } = useParams();
   // console.log(id);
 
-  const [productList, setProductList] = useState([]);
+  const [product, setProduct] = useState({});
   useEffect(() => {
-    const storeProducts = async () => {
+    const storeProduct = async () => {
       setLoading(true);
-      let prodts = await getProducts();
-      setProductList(prodts.data);
+      let prodt = await productsServices.getProduct(id);
+      setProduct(prodt.data());
       setLoading(false);
     };
-    storeProducts();
+    storeProduct();
   }, []);
-
-  let product = productList.map((product, index) => {
-    if (product["id"] == id) {
-      return <Product product={product} key={index} />;
-    }
-  });
 
   return (
     <div>
@@ -52,7 +35,7 @@ export default function ProductPage() {
           </div>
         </div>
       ) : (
-        product
+        <Product product={product} id={id} />
       )}
       <Footer />
     </div>

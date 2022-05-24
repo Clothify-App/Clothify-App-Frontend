@@ -53,7 +53,7 @@ export default function Cart() {
                 Quantity
               </h3>
               <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-                Price
+                Rent-Price / Day
               </h3>
               <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
                 Refundable Amount
@@ -64,7 +64,11 @@ export default function Cart() {
             </div>
             <div className="h-[26rem] overflow-y-scroll">{cartedProducts}</div>
           </div>
-          <Summary totalPrice={totalPrice} totalRefundable={totalRefundable} />
+          <Summary
+            totalPrice={totalPrice}
+            totalRefundable={totalRefundable}
+            CartProducts={CartProducts}
+          />
         </div>
         <Link
           to="/products"

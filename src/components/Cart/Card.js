@@ -8,6 +8,7 @@ export default function Card({
   incrementQuantity,
   decrementQuantity,
 }) {
+  // console.log(product);
   return (
     <>
       <AiOutlineClose
@@ -37,7 +38,9 @@ export default function Card({
           >
             <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
           </svg>
-          <h3 className="mx-2 border text-center w-8">{product.quantity}</h3>
+          <h3 className="mx-2 border text-center w-8">
+            {product.quantityAvailable}
+          </h3>
           <svg
             className="fill-current text-gray-600 w-3 cursor-pointer"
             viewBox="0 0 448 512"
@@ -47,7 +50,7 @@ export default function Card({
           </svg>
         </div>
         <span className="text-center w-1/5 font-semibold text-sm">
-          &#8377;{product.price}
+          &#8377;{product.rentPrice}
         </span>
         <span className="text-center w-1/5 font-semibold text-sm">
           &#8377;{product.refundableAmount}
@@ -55,8 +58,8 @@ export default function Card({
         <span className="text-center w-1/5 font-semibold text-sm">
           &#8377;
           {(
-            (product.price + product.refundableAmount) *
-            product.quantity
+            (product.rentPrice + product.refundableAmount) *
+            product.quantityAvailable
           ).toFixed(2)}
         </span>
       </div>

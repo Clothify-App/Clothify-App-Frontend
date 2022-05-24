@@ -2,20 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
 import Filters from "./Filters";
+import ProductsServices from "../../Services/products.services";
 import Loader from "../Loader/Loader";
 import { useProduct } from "../../Context/ProductContext";
 const PRODUCT_API = process.env.REACT_APP_PRODUCT_API;
-
-const getProducts = async () => {
-  return axios
-    .get(PRODUCT_API)
-    .then((products) => {
-      return products;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
 
 const Products = () => {
   const { loading, setLoading } = useProduct();
@@ -24,8 +14,10 @@ const Products = () => {
   useEffect(() => {
     const storeProducts = async () => {
       setLoading(true);
-      let prodts = await getProducts();
-      setProductList(prodts.data);
+      const prodts = await ProductsServices.getAllProducts();
+      setProductList(
+        prodts.docs.map((prodt) => ({ ...prodt.data(), id: prodt.id }))
+      );
       setLoading(false);
     };
     storeProducts();
@@ -33,23 +25,13 @@ const Products = () => {
 
   let products = productList.map((product, index) => {
     // console.log(product);
-    return (
-      <ProductCard
-        key={index}
-        title={product.title}
-        price={product.price}
-        rating={product.rating}
-        image={product.image}
-        id={product.id}
-        category={product.category}
-      />
-    );
+    return <ProductCard key={index} product={product} />;
   });
   return (
-    <div className="flex h-[90vh] overflow-hidden">
+    <div className="flex h-[90vh] overflow-hidden bg-gray-100">
       <Filters />
       {loading ? (
-        <div className="w-5/6">
+        <div className="w-11/12">
           <div className="relative left-1/2 top-1/2">
             <Loader size={54} />
           </div>
