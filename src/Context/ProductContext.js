@@ -5,10 +5,53 @@ export function useProduct() {
   return useContext(ProductContext);
 }
 const ProductProvider = ({ children }) => {
+  const [search, setSearch] = useState("");
+  const [CartProducts, setCartProducts] = useState(
+    JSON.parse(localStorage.getItem("cartedProducts")) || []
+  );
+  const [loading, setLoading] = useState(true);
+  const [filterOption, setFilterOption] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalRefundable, setTotalRefundable] = useState(0);
-  const [CartProducts, setCartProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let newtotalPrice = totalPrice;
+    let newtotalRefundable = totalRefundable;
+    CartProducts.map((product) => {
+      newtotalPrice += product.rentPrice;
+      newtotalRefundable += product.refundableAmount;
+    });
+    setTotalPrice(newtotalPrice);
+    setTotalRefundable(newtotalRefundable);
+  }, []);
+
+  // console.log(CartProducts);
+
+  const filterableProduct = (product) => {
+    if (filterOption.length == 0) {
+      return true;
+    }
+
+    if (filterOption.includes(String(product.color).toLowerCase())) {
+      return true;
+    }
+
+    for (let index = 0; index < product.tags.length; index++) {
+      const tag = product.tags[index];
+      if (filterOption.includes(String(tag).toLowerCase())) {
+        return true;
+      }
+    }
+
+    for (let index = 0; index < product.sizesAvailable.length; index++) {
+      const size = product.sizesAvailable[index];
+      if (filterOption.includes(String(size).toLowerCase())) {
+        return true;
+      }
+    }
+
+    return false;
+  };
 
   const incrementQuantity = (index) => {
     let newCartProducts = [...CartProducts];
@@ -50,6 +93,7 @@ const ProductProvider = ({ children }) => {
     setTotalRefundable(newtotalRefundable);
     setTotalPrice(newtotalPrice);
     setCartProducts(newCartProducts);
+    localStorage.setItem("cartedProducts", JSON.stringify(newCartProducts));
   };
 
   const addItem = (product, id) => {
@@ -77,12 +121,19 @@ const ProductProvider = ({ children }) => {
     setTotalPrice(newtotalPrice);
     setTotalRefundable(newtotalRefundable);
     setCartProducts(newCartProducts);
+    localStorage.setItem("cartedProducts", JSON.stringify(newCartProducts));
   };
 
   const value = {
     CartProducts,
     totalPrice,
     totalRefundable,
+    search,
+    setSearch,
+    filterOption,
+    setFilterOption,
+    filterableProduct,
+    setCartProducts,
     removeItem,
     addItem,
     incrementQuantity,

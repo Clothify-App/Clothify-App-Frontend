@@ -59,7 +59,6 @@ const Cropper = ({ setimgURL }) => {
       .post("https://api.imgbb.com/1/upload", body)
       .then(async (Response) => {
         let image = Response.data.data.display_url;
-        await usersServices.UpdateUser(userID, { image: image });
         setimgURL(image);
         closeModal();
       })

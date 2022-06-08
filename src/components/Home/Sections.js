@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useProduct } from "../../Context/ProductContext";
 
 const Sections = () => {
+  const navigate = useNavigate();
+  const { setSearch } = useProduct();
   return (
     <div className="my-20">
       <span className="flex m-20 items-center justify-center">
@@ -22,7 +26,13 @@ const Sections = () => {
             </h3>
           </div>
         </div> */}
-        <div className="relative justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110">
+        <div
+          onClick={() => {
+            setSearch("Men");
+            navigate("/products");
+          }}
+          className="relative cursor-pointer justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110"
+        >
           <img
             src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16236060/2022/4/21/1ac9d2fb-5bb6-45aa-af30-da65de823ede1650544776719-Anouk-Men-Navy-Blue-Pure-Cotton-Kurta-with-Trousers--Printed-1.jpg"
             className="block w-full rounded-t-lg  h-4/5 "
@@ -44,7 +54,13 @@ const Sections = () => {
           <div className="overlay rounded-lg absolute top-0 left-0 right-0 bottom-0 h-full w-full opacity-0 duration-200 ease-in bg-black group-hover:opacity-30"></div>
         </div> */}
 
-        <div className="relative justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110">
+        <div
+          onClick={() => {
+            setSearch("Kids");
+            navigate("/products");
+          }}
+          className="relative cursor-pointer justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110"
+        >
           <img
             src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/15303310/2021/8/30/e62ebb17-5f1d-4b67-bb35-9152d73d0f451630313142876VASTRAMAYBoysMulticolouredFloralEmbroideredRegularKurtawithP1.jpg"
             className="block w-full rounded-t-lg  h-4/5 "
@@ -59,7 +75,13 @@ const Sections = () => {
 
         {/* Women's Card */}
 
-        <div className="relative justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110">
+        <div
+          onClick={() => {
+            setSearch("Female");
+            navigate("/products");
+          }}
+          className="relative cursor-pointer justify-between group flex flex-col z-0 h-[28rem]  rounded-lg shadow-lg bg-white  max-w-sm  duration-700 hover:scale-110"
+        >
           <img
             src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/10234505/2019/11/19/03cda8c2-958c-4641-bb1f-8722915d5b541574137723272-W-Women-Kurta-Sets-8281574137720586-1.jpg"
             className="block w-full rounded-t-lg  h-4/5 "
