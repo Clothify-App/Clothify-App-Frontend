@@ -14,6 +14,7 @@ import ProductPage from "../Pages/ProductPage";
 import Invoice from "./Payments/InvoicePage";
 import Cancel from "./Payments/Cancel";
 import NoMatch from "./NoMatch/NoMatch";
+import ShowInvoice from "./Dashboard/ShowInvoice";
 
 function Navigations() {
   return (
@@ -28,6 +29,7 @@ function Navigations() {
       <Route path="/image" element={<Image />} />
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/invoice/:id" element={<Invoice />} />
+      <Route path="/orderHistory/:id" element={<ShowInvoice />} />
       <Route path="/cancel" element={<Cancel />} />
       <Route
         path="/dashboard"

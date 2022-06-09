@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import usersServices from "../../Services/users.services";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 import { useAuth } from "../../Context/AuthContext";
 const Cropper = ({ setimgURL }) => {
   const { userID } = useAuth();
-
+  const [loader, setLoader] = useState(false);
   const [src, setSrc] = useState(null);
   const [image, setImage] = useState(null);
   const [output, setOutput] = useState(null);
+
+  useEffect(() => {
+    setSrc(null);
+    setImage(null);
+    setOutput(null);
+  }, []);
 
   const [crop, setCrop] = useState({
     unit: "px",
@@ -24,6 +31,7 @@ const Cropper = ({ setimgURL }) => {
 
   const closeModal = () => {
     var close = document.getElementById("close");
+
     // console.log(close);
     close.click();
   };
@@ -50,6 +58,7 @@ const Cropper = ({ setimgURL }) => {
 
   const handleImageUploading = async (handleSubmit) => {
     // console.log(output);
+    setLoader(true);
     const content_type = output.split(";")[0].split(":")[1];
     const base64 = output.split(";")[1].split(",")[1];
     const blob = b64toBlob(base64, content_type);
@@ -62,6 +71,10 @@ const Cropper = ({ setimgURL }) => {
         let image = Response.data.data.display_url;
         await usersServices.UpdateUser(userID, { image: image });
         setimgURL(image);
+        setSrc(null);
+        setImage(null);
+        setOutput(null);
+        setLoader(false);
         closeModal();
       })
       .catch((error) => {
@@ -164,13 +177,20 @@ const Cropper = ({ setimgURL }) => {
           </h3>
           {output && <img src={output} className="" alt="productImage" />}
           <div className="uploadSection flex-1 flex justify-center items-center">
-            <div className="container max-w-[200px] flex m-auto">
+            <div className="container max-w-[200px] flex m-auto items-center">
               <button
                 className="p-2 border-black border-2 rounded-md mt-5 bg-black text-white"
                 onClick={handleImageUploading}
               >
                 upload Image
               </button>
+              {loader ? (
+                <div className="mx-3">
+                  <Loader size={30} />
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
