@@ -37,6 +37,11 @@ class usersServices {
     return updateDoc(userDoc, updatedUser);
   };
 
+  getUserByEmail = (email) => {
+    let q = query(collection(db, "users"), where("email", "==", email));
+    return getDocs(q);
+  };
+
   getUser = (id) => {
     const user = doc(db, "users", id);
     return getDoc(user);

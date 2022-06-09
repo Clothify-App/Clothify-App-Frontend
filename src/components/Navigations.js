@@ -27,7 +27,7 @@ function Navigations() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/image" element={<Image />} />
       <Route path="/product/:id" element={<ProductPage />} />
-      <Route path="/invoice" element={<Invoice />} />
+      <Route path="/invoice/:id" element={<Invoice />} />
       <Route path="/cancel" element={<Cancel />} />
       <Route
         path="/dashboard"

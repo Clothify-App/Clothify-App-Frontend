@@ -2,14 +2,15 @@ import React, { useRef } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";
 import { useProduct } from "../../Context/ProductContext";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { MdSpaceDashboard } from "react-icons/md";
 
 const Navbar = () => {
-  const searchQuery = useRef("");
+  // let searchQuery = useRef("");
   const location = useLocation();
-  const { CartProducts } = useProduct();
+  const navigate = useNavigate();
+  const { CartProducts, search, setSearch } = useProduct();
   const { currentUser } = useAuth();
   return (
     <>
@@ -27,6 +28,9 @@ const Navbar = () => {
           {/* first hover effect */}
           <p className="relative group cursor-pointer">
             <Link
+              onClick={() => {
+                setSearch("");
+              }}
               to="/products"
               className={
                 location.pathname === "/products"
@@ -91,17 +95,27 @@ const Navbar = () => {
         </p> */}
         </div>
 
-        <div className="middle w-1/3 justify-center duration-700 flex hover:w-1/2">
-          <form className="search flex items-center rounded-3xl border-2 border-gray-200 w-3/4  justify-between hover:border-[#ff3895]">
+        <div className="middle w-1/3 hover:w-1/2  group justify-center duration-700 flex">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            className="search  flex items-center rounded-3xl border-2 border-gray-200 w-3/4  justify-between hover:border-[#ff3895]"
+          >
             <input
               type="text"
               name="search"
-              id=""
-              ref={searchQuery}
+              id="search"
+              value={search}
               placeholder="Search Here"
               style={{ boxShadow: "none" }}
-              className="w-11/12 p-[0.1rem] pl-5 m-[0.3rem] outline-none border-none"
+              onChange={(e) => {
+                setSearch(e.target.value);
+                navigate("/products");
+              }}
+              className=" w-11/12  capitalize  p-[0.1rem] pl-5 m-[0.3rem] outline-none border-none"
             />
+
             <span className="w-9 h-9 rounded-full bg-[#ff3895] flex items-center justify-center text-white m-1">
               <BiSearchAlt2 className="text-xl cursor-pointer" />
             </span>
@@ -130,7 +144,7 @@ const Navbar = () => {
             </Link>
           </div>
         ) : (
-          <div className="right w-1/4 flex justify-end gap-5 items-center">
+          <div className="right w-1/4 flex justify-end gap-5 mr-3 items-center">
             <p className="relative group cursor-pointer">
               <Link to="/login" className="group-hover:text-pink-600">
                 Sign In

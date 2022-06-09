@@ -47,7 +47,12 @@ function AddProduct({ setNavbarOption }) {
 
     console.log(newProduct);
     const ProductResponce = await ProductService.addProduct(newProduct);
-    console.log(ProductResponce);
+    newProduct.uid = ProductResponce.id;
+    let confirmProductResponce = await ProductService.updateProduct(
+      ProductResponce.id,
+      newProduct
+    );
+    console.log(confirmProductResponce);
     setNavbarOption(2);
   };
 

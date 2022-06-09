@@ -1,5 +1,5 @@
 import React from "react";
-import Cropper from "./Cropper";
+import ProfileCropper from "./ProfileCropper";
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineCamera } from "react-icons/ai";
 
@@ -48,7 +48,7 @@ function ProfilePhoto({ setimgURL }) {
                   </button>
                 </div>
                 <div class="modal-body relative p-4">
-                  {<Cropper setimgURL={setimgURL} />}
+                  {<ProfileCropper setimgURL={setimgURL} />}
                 </div>
               </div>
             </div>

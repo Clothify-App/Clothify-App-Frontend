@@ -28,6 +28,14 @@ const AuthProvider = ({ children }) => {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
+  function isLoggedIn() {
+    if (localStorage.getItem("userID")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function logout() {
     localStorage.removeItem("userID");
     return auth.signOut();
@@ -45,6 +53,7 @@ const AuthProvider = ({ children }) => {
     userID,
     setUserID,
     signup,
+    isLoggedIn,
     login,
     logout,
     signUpWithGoogle,

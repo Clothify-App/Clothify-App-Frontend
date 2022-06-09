@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useProduct } from "../../Context/ProductContext";
+import { useAuth } from "../../Context/AuthContext";
 import Loader from "../Loader/Loader";
 
 export default function Summary({ totalPrice, totalRefundable, CartProducts }) {
   const [paymentLoading, setPaymentLoading] = useState(false);
+  const { userId, isLoggedIn, currentUser } = useAuth();
   const handlePayment = async () => {
     setPaymentLoading(true);
     try {
@@ -12,6 +14,7 @@ export default function Summary({ totalPrice, totalRefundable, CartProducts }) {
         checkoutData: CartProducts.map((product) => ({
           ...{ id: product.id, quantity: product.quantityAvailable },
         })),
+        userEmail: currentUser.email,
       };
       await axios
         .post("http://localhost:80/checkout", data)
@@ -65,12 +68,16 @@ export default function Summary({ totalPrice, totalRefundable, CartProducts }) {
 
         {!paymentLoading ? (
           <button
-            disabled={CartProducts.length < 1 ? true : false}
+            disabled={
+              isLoggedIn() ? (CartProducts.length > 0 ? false : true) : true
+            }
             onClick={() => handlePayment()}
             className={
-              CartProducts.length < 1
-                ? "bg-indigo-200 font-semibold  py-3 text-sm text-white uppercase w-full"
-                : "bg-indigo-500 font-semibold hover:shadow-md py-3 text-sm text-white uppercase w-full"
+              isLoggedIn()
+                ? CartProducts.length < 1
+                  ? "bg-indigo-200 font-semibold  py-3 text-sm text-white uppercase w-full"
+                  : "bg-indigo-500 font-semibold hover:shadow-md py-3 text-sm text-white uppercase w-full"
+                : "bg-indigo-200 font-semibold  py-3 text-sm text-white uppercase w-full"
             }
           >
             <h3>Checkout</h3>

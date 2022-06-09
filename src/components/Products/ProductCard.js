@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setProductDisplay }) => {
   return (
     <div className="hover:scale-95 duration-300 hover:shadow-md flex bg-white flex-col justify-between group relative mx-3 p-4 my-5 rounded-3xl group-hover:shadow-lg">
       <div className="w-4/4 m-auto min-h-70 bg-gray-200 aspect-w-1 aspect-h-1 rounded-2xl overflow-hidden group-hover:opacity-95 group-hover:shadow-lg lg:h-70 lg:aspect-none">
         <img
           src={product.image}
           alt="Front of men's Basic Tee in black."
+          draggable={false}
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
