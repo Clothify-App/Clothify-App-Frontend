@@ -1,43 +1,85 @@
-import React from 'react'
-import {AiOutlineClose} from 'react-icons/ai'
-// Add Your Invoice structure here for now it is default 
+import React, { useRef, useState, useEffect } from "react";
+import ReactToPrint, { PrintContextConsumer } from "react-to-print";
+import { BsPrinter } from "react-icons/bs";
+import Loader from "../Loader/Loader";
+import Invoice from "../Payments/Invoice";
+import productsServices from "../../Services/products.services";
+import usersServices from "../../Services/users.services";
+import ordersServices from "../../Services/orders.services";
+import { useProduct } from "../../Context/ProductContext";
+import { Link, useParams } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+
 function ShowInvoice() {
+  const [loader, setLoader] = useState(true);
+  const { setCartProducts } = useProduct();
+  const componentRef = useRef();
+  const { id } = useParams();
+  const [amount, setAmount] = useState();
+  const [productsData, setProductsData] = useState([]);
+  const [payment_date, setPayment_date] = useState();
+  const [buyer, setBuyer] = useState();
+  const [quantityDetails, setQuantityDetails] = useState([]);
+  useEffect(() => {
+    const getOrderData = async () => {
+      setCartProducts([]);
+      localStorage.removeItem("cartedProducts");
+      const orderData = await ordersServices.getOrder(id);
+      let data = orderData.data();
+      let prodts = await productsServices.getProductById(
+        JSON.parse(data.productsData)
+      );
+      let newProductData = [];
+      prodts.docs.map((pd) => {
+        newProductData.push(pd.data());
+      });
+      let user = await usersServices.getUserByEmail(data.email);
+      console.log(user.docs[0].data(), newProductData);
+      setProductsData(newProductData);
+      setBuyer(user.docs[0].data());
+      setAmount(data.amount);
+      setPayment_date(data.payment_date);
+      setQuantityDetails(JSON.parse(data.quantityDetails));
+      setLoader(false);
+    };
+    getOrderData();
+  }, [amount]);
   return (
     <div>
-        <div>
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
-            show Invoice
-        </button>
-        </div>  
-        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable relative w-auto pointer-events-none">
-            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalCenteredScrollableLabel">
-                Invoice
-                </h5>
-                <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"><AiOutlineClose className="hover: scale-105" /></button>
-            </div>
-            <div class="modal-body relative p-4">
-                <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br/>
-                <p>Just like that.</p>
-            </div>
-            <div
-                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg hover:text-white focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
-                Close
-                </button>
-            </div>
-            </div>
-            </div>
+      <div className="flex flex-col items-center ">
+        <div className="flex flex-row justify-between items-center w-full px-5 sticky top-0 z-30 bg-[#F5F5F5]">
+          <Link
+            to={"/dashboard"}
+            className="flex flex-row items-center hover:underline "
+          >
+            {<AiOutlineArrowLeft />}Back To Home
+          </Link>
+          <ReactToPrint
+            trigger={() => (
+              <button className="flex items-center text-xl m-auto my-5 bg-white px-3 py-1 border-pink-400 border-2 rounded-xl">
+                <span className="mx-2">Print</span>
+                <BsPrinter />
+              </button>
+            )}
+            content={() => componentRef.current}
+          />
+        </div>
+        {!loader ? (
+          <Invoice
+            ref={componentRef}
+            buyer={buyer}
+            productsData={productsData}
+            quantityDetails={quantityDetails}
+            payment_date={payment_date}
+            amount={amount}
+            id={id}
+          />
+        ) : (
+          <Loader size={50} />
+        )}
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default ShowInvoice
+export default ShowInvoice;
